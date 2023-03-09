@@ -51,6 +51,19 @@
                     </group>
                 </group>
 
+                <group name="Co-Makers" string="Co-Makers">
+                    <field name="comakers_table" nolabel="1">
+                        <tree editable="top">
+                            <field name="comaker_con" invisible="True"/>
+                            <field name="comakers_id" />
+                            <field name="comakers_name" />
+                            <field name="comakers_contact" />
+                            <field name="comakers_Address" />
+                        </tree>    
+                    </field>
+
+                </group>
+
             </sheet>
           </form>
       </field>

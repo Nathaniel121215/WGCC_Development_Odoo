@@ -36,6 +36,9 @@ class LoanApplication(models.Model):
     payment_option = fields.Many2one('payment.option',string="Payment Option:")
     release_option = fields.Many2one('release.option',string="Release Option:")
 
+    # Co - Makers
+    comakers_table = fields.One2many('co.makers','comaker_con')
+
 
 class LoanApplicationTermsinMos(models.Model):
     _name = 'terms.mos'
@@ -67,4 +70,12 @@ class LoanApplicationYearsofService(models.Model):
 
     years_in_service = fields.Integer('Years in Service:')
 
+class LoanApplicationCoMakers(models.Model):
+    _name = 'co.makers'
+
+    comaker_con = fields.Many2one('wgcc.loanapplication')
+    comakers_id = fields.Integer('ID No:')
+    comakers_name = fields.Char('Name:')
+    comakers_contact = fields.Integer('Contact No:')
+    comakers_Address = fields.Char('Address:')
   
