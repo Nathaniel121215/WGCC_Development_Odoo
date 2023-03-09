@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <!-- top level menu: no parent -->
+     <menuitem id="main_loan_menu" name="Loan"/>
+
+     <menuitem id="loan_menu" name="Loan"
+               parent="main_loan_menu"/>
+          
+     <menuitem id="amortization_menu" name="Amortization" parent="loan_menu"
+               action="amortization_action"/>
+
+
+    <menuitem id="loan_menu2" name="Loan Application"
+               parent="main_loan_menu" action="loanapplication_action"/>
+
+
+
+    </data>
+
+</odoo>
