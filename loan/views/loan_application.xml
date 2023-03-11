@@ -1,76 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <data>
+        <!-- form view -->
+        <record model="ir.ui.view" id="loanapplication_form_view">
+            <field name="name">loanapplication.form</field>
+            <field name="model">wgcc.loanapplication</field>
+            <field name="arch" type="xml">
+                <form string="Loan Application Form">
+                    <sheet>
+                        <group name="Member's Information" string="Member's Information">
+                            <group>
+                                <field name="employee_id" />
+                                <field name="employee_name" />
+                                <field name="company_name" />
+                            </group>
+                            <group>
+                                <field name="date_hired" />
+                                <field name="years_in_service" />
+                                <field name="membership_date" />
+                            </group>
+                            <group>
+                                <field name="pms_date" />
+                                <field name="share_capital_balance" />
+                                <field name="billing_l_6month" />
+                                <field name="collection_l_6month" />
+                            </group>
+                            <group>
+                                <field name="class_type" />
+                                <field name="collection_percentage" />
+                                <field name="employee_salary" />
+                            </group>
+                        </group>
 
-  <data>
-  <!-- form view -->
-    <record model="ir.ui.view" id="loanapplication_form_view">
-      <field name="name">loanapplication.form</field>
-      <field name="model">wgcc.loanapplication</field>
-      <field name="arch" type="xml">
-          <form string="Loan Application Form">
-            <sheet>
-                <group name="Member's Information" string="Member's Information">
-                    <group>
-                        <field name="employee_id"/>
-                        <field name="employee_name"/>
-                        <field name="company_name"/>
-                    </group>
-                    <group>
-                        <field name="date_hired"/>
-                        <field name="years_in_service"/>
-                        <field name="membership_date"/>
-                    </group>
-                    <group>
-                        <field name="pms_date"/>
-                        <field name="share_capital_balance"/>
-                        <field name="billing_l_6month"/>
-                        <field name="collection_l_6month"/>
-                    </group>
-                    <group>
-                        <field name="class_type"/>
-                        <field name="collection_percentage"/>
-                        <field name="employee_salary"/>
-                    </group>
-                </group>
+                        <group name="Details of Loan" string="Details of Loan">
+                            <group>
+                                <field name="loan_no" />
+                                <field name="loan_type" />
+                                <field name="loan_amount" />
+                                <field name="terms_in_mos" />
+                                <field name="monthly_armotization" />
+                            </group>
 
-                <group name="Details of Loan" string="Details of Loan">
-                    <group>
-                        <field name="loan_no"/>
-                        <field name="loan_type"/>
-                        <field name="loan_amount"/>
-                        <field name="terms_in_mos"/>
-                        <field name="monthly_armotization"/>
-                    </group>
+                            <group>
+                                <field name="semi_armotization" />
+                                <field name="interest" />
+                                <field name="principal" />
+                                <field name="payment_option" />
+                                <field name="release_option" />
+                            </group>
+                        </group>
 
-                    <group>
-                        <field name="semi_armotization"/>
-                        <field name="interest"/>
-                        <field name="principal"/>
-                        <field name="payment_option"/>
-                        <field name="release_option"/>
-                    </group>
-                </group>
+                        <group name="Co-Makers" string="Co-Makers">
+                            <field name="comakers_table" nolabel="1">
+                                <tree editable="top">
+                                    <field name="comaker_con" invisible="True" />
+                                    <field name="comakers_id" />
+                                    <field name="comakers_name" />
+                                    <field name="comakers_contact" />
+                                    <field name="comakers_Address" />
+                                </tree>
+                            </field>
 
-                <group name="Co-Makers" string="Co-Makers">
-                    <field name="comakers_table" nolabel="1">
-                        <tree editable="top">
-                            <field name="comaker_con" invisible="True"/>
-                            <field name="comakers_id" />
-                            <field name="comakers_name" />
-                            <field name="comakers_contact" />
-                            <field name="comakers_Address" />
-                        </tree>    
-                    </field>
+                        </group>
 
-                </group>
+                        <group name="Previous Loan" string="Previous Loan">
+                            <group>
+                                <field name="previous_loan_no" />
+                                <field name="previous_loan_type" />
+                                <field name="previous_gross_amount" />
+                                <field name="previous_released_date" />
+                                
+                            </group>
 
-            </sheet>
-          </form>
-      </field>
-  </record>
+                            <group>
+                                <field name="previous_existing_balance" />
+                                <field name="previous_deferred_balance" />
+                                <field name="previous_terms_in_mos" />
+                                <field name="previous_monthly_armotization" />
+                                
+                            </group>
 
-  <!-- search view -->
-  <!-- <record model="ir.ui.view" id="amortization_search_view">
+                            <group>
+                                <field name="encoded_by" />
+                                <field name="date_encoded" />
+
+                                
+                            </group>
+
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- search view -->
+        <!-- <record model="ir.ui.view" id="amortization_search_view">
     <field name="name">amortization.search</field>
     <field name="model">wgcc.amortization</field>
     <field name="arch" type="xml">
@@ -79,21 +104,20 @@
             <field name="description"/>
         </search>
     </field> -->
-  <!-- </record> -->
+        <!-- </record> -->
 
-    <!-- window action -->
-    <record model="ir.actions.act_window" id="loanapplication_action">
-        <field name="name">Loan_Application</field>
-        <field name="res_model">wgcc.loanapplication</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="oe_view_nocontent_create">
-            Create Record for Loan Application
-            </p>
-        </field>
-    </record>
-  
-  </data>
+        <!-- window action -->
+        <record model="ir.actions.act_window" id="application_action">
+            <field name="name">Loan_Application</field>
+            <field name="res_model">wgcc.loanapplication</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create Record for Loan Application
+                </p>
+            </field>
+        </record>
 
+    </data>
 </odoo>

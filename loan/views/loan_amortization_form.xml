@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- form view -->
+        <record model="ir.ui.view" id="amortization_form_view">
+            <field name="name">amortization.form</field>
+            <field name="model">wgcc.amortization</field>
+            <field name="arch" type="xml">
+                <form string="Amortization Form">
+                    <sheet>
+                        <group name="Details Loan" string="Details Loan">
+                            <field name="employee_id" />
+                            <field name="name" />
+                            <field name="loan_type" />
+                            <field name="loan_amount" />
+                            <field name="gross_amount" />
+                            <field name="interest_rate" />
+                            <field name="term_of_months" />
+                        </group>
+                        <group name="Summary" string="Summary">
+                            <field name="monthly_payment" />
+                            <field name="number_of_payment" />
+                            <field name="total_payment" />
+                            <field name="total_interest" />
+                        </group>
+                        <group name="Less" string="Less">
+                            <field name="less_ids" nolabel="1">
+                                <tree editable="top">
+                                    <field name="share_capital" />
+                                    <field name="description" />
+                                    <field name="other_loans" />
+                                    <field name="amount" />
+                                </tree>
+                            </field>
+                        </group>
+                        <group name="Other" string="Other">
+                            <field name="other_ids" nolabel="1">
+                                <tree editable="top">
+                                    <field name="description" />
+                                    <field name="amount" />
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- search view -->
+        <record model="ir.ui.view" id="amortization_search_view">
+            <field name="name">amortization.search</field>
+            <field name="model">wgcc.amortization</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                </search>
+            </field>
+        </record>
+
+        <!-- window action -->
+        <record model="ir.actions.act_window" id="amortization_action">
+            <field name="name">Amortization</field>
+            <field name="res_model">wgcc.amortization</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create the first loan amortization
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

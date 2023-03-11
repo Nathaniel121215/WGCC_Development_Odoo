@@ -39,6 +39,18 @@ class LoanApplication(models.Model):
     # Co - Makers
     comakers_table = fields.One2many('co.makers','comaker_con')
 
+    # Previous Loan
+    previous_loan_no = fields.Integer('Loan No:')
+    previous_loan_type = fields.Many2one('loan.type',string="Loan Type:")
+    previous_gross_amount = fields.Float('Gross Amount:')
+    previous_released_date = fields.Date('Released Date:')
+    previous_existing_balance = fields.Float('Existing Balance:')
+    previous_deferred_balance = fields.Float('Deferred Balance:')
+    previous_terms_in_mos = fields.Many2one('terms.mos',string="Terms in Mos:")
+    previous_monthly_armotization = fields.Float('Monthly Amortization:')
+
+    encoded_by = fields.Char('Encoded By:')
+    date_encoded = fields.Date('Date Encoded:')
 
 class LoanApplicationTermsinMos(models.Model):
     _name = 'terms.mos'

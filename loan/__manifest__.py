@@ -25,7 +25,7 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
-        'views/views.xml',
+        'views/loan_amortization_form.xml',
         'views/menu.xml',
         'views/loan_application.xml',
     ],
