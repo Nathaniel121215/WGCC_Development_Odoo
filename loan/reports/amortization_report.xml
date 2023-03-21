@@ -3,15 +3,16 @@
     <data>
     
         <template id="loan_amortization_report_template" name="loan_amortization">
-            <t t-call="report.html_container">
-                <div style="width:100%; display:flex; justify-content:center; align-items:center;  border:1px solid blue;">
-                    <div style="max-width:80%; width:100%;  border:1px solid red;">
-                        <div class="header-main" style="display:flex; gap:50%;">
-                            <div class="header_text">
+        <t t-call="report.html_container">
+            <div class="page">
+                <div style="border:1px solid red; width:100%; display:flex; justify-content:center; align-items:center; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; -webkit-box-pack: center; -webkit-justify-content: center;">
+                    <div style="border:1px solid red; max-width:80%; width:100%;">
+                        <div style="display:flex; justify-content:space-between; flex-direction:row; width:100%; border:1px solid blue; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex;">
+                            <div>
                                 <p>Loan Amortization</p>
                             </div>
 
-                            <div class="personal_info">
+                            <div>
                                 <t t-foreach="docs" t-as="o">
                                     <p>Name: <t t-esc="o.company_name"/></p>
                                     <p>ID No. <t t-esc="o.company_name"/></p>
@@ -21,8 +22,9 @@
                         </div>
                     </div>
                 </div>
-            </t>
+            </div>
+        </t>
         </template>
     </data>
 </odoo>
-    
+

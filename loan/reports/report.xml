@@ -9,7 +9,7 @@
       string="Loan Amortization Report"
       name="loan.loan_amortization_report_template"
       file="loan.loan_amortization_report_template"
-      report_type="qweb-pdf"
+      report_type="qweb-html"
     />
     
     </data>
