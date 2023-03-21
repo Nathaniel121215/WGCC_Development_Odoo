@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+    <report 
+      id="loan_amortization_report"
+      model="wgcc.loanapplication"
+      string="Loan Amortization Report"
+      name="loan.loan_amortization_report_template"
+      file="loan.loan_amortization_report_template"
+      report_type="qweb-pdf"
+    />
+    
+    </data>
+    
+
+</odoo>

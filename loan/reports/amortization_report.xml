@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    
+        <template id="loan_amortization_report_template" name="loan_amortization">
+            <t t-call="report.html_container">
+                <div style="width:100%; display:flex; justify-content:center; align-items:center;  border:1px solid blue;">
+                    <div style="max-width:80%; width:100%;  border:1px solid red;">
+                        <div class="header-main" style="display:flex; gap:50%;">
+                            <div class="header_text">
+                                <p>Loan Amortization</p>
+                            </div>
+
+                            <div class="personal_info">
+                                <t t-foreach="docs" t-as="o">
+                                    <p>Name: <t t-esc="o.company_name"/></p>
+                                    <p>ID No. <t t-esc="o.company_name"/></p>
+                                    <p>ID Loan. <t t-esc="o.company_name"/></p>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
+    

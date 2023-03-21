@@ -10,7 +10,7 @@
         <menuitem id="amortization_menu" name="Amortization" parent="loan_menu"
             action="amortization_action" />
 
-        <menuitem id="loan_menu2" name="Loan Application" parent="loan_menu"
+        <menuitem id="application_menu" name="Loan_Application" parent="loan_menu"
             action="application_action" />
     </data>
 </odoo>

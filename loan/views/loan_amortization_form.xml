@@ -7,39 +7,45 @@
             <field name="model">wgcc.amortization</field>
             <field name="arch" type="xml">
                 <form string="Amortization Form">
+                    <header>
+                        <button string="Generate Amortization" name="action_name" type="object" class="oe_highlight"/>
+                       <button string="Cancel" name="action_name" type="object" class="oe_highlight"/>
+                    </header>
                     <sheet>
-                        <group name="Details Loan" string="Details Loan">
-                            <field name="employee_id" />
-                            <field name="name" />
-                            <field name="loan_type" />
-                            <field name="loan_amount" />
-                            <field name="gross_amount" />
-                            <field name="interest_rate" />
-                            <field name="term_of_months" />
-                        </group>
-                        <group name="Summary" string="Summary">
-                            <field name="monthly_payment" />
-                            <field name="number_of_payment" />
-                            <field name="total_payment" />
-                            <field name="total_interest" />
-                        </group>
-                        <group name="Less" string="Less">
-                            <field name="less_ids" nolabel="1">
-                                <tree editable="top">
-                                    <field name="share_capital" />
-                                    <field name="description" />
-                                    <field name="other_loans" />
-                                    <field name="amount" />
-                                </tree>
-                            </field>
-                        </group>
-                        <group name="Other" string="Other">
-                            <field name="other_ids" nolabel="1">
-                                <tree editable="top">
-                                    <field name="description" />
-                                    <field name="amount" />
-                                </tree>
-                            </field>
+                        <group>
+                            <group>
+                                <group name="Details Loan" string="Details Loan">
+                                    <field name="employee_id" widget='selection'/>
+                                    <field name="name" />
+                                    <field name="loan_type" />
+                                    <field name="loan_amount" />
+                                    <field name="gross_amount" />
+                                    <field name="interest_rate" />
+                                    <field name="term_of_months" />
+                                </group>
+                                    <group name="Summary" string="Summary">
+                                        <field name="monthly_payment" />
+                                        <field name="number_of_payment" />
+                                        <field name="total_payment" />
+                                        <field name="total_interest" />
+                                    </group>
+                                
+                                    <group name="Less" string="Less">
+                                        <field name="share_capital" />
+                                        <field name="description" />
+                                        <field name="other_loans" />
+                                        <field name="amount" />
+                                    </group>
+
+                                    <group name="Other" string="Other">
+                                        <field name="description" />
+                                        <field name="amount" />
+                                    </group>
+                                  
+                                </group>
+                            <group name="box"  style="border: 2px solid red;height: 80rem;">
+                                <p>benjamin</p>
+                            </group>
                         </group>
                     </sheet>
                 </form>

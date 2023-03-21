@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError
 
 class LoanApplication(models.Model):
     _name = 'wgcc.loanapplication'
 
     # Member's Information
-    employee_id = fields.Integer('Employee ID No:')
-    employee_name = fields.Char('Name:')
+    employee_id = fields.Many2one('hr.employee')
+    employee_name = fields.Many2one('hr.employee')
+    
     company_name = fields.Char('Company:')
 
     date_hired = fields.Date('Date Hired:')
@@ -51,6 +53,46 @@ class LoanApplication(models.Model):
 
     encoded_by = fields.Char('Encoded By:')
     date_encoded = fields.Date('Date Encoded:')
+
+    status = fields.Selection([('draft','Draft'),('for_approval','For Approval'),('approved','Approved'),('hold','Hold')],default ="draft", string ="Status:")
+
+    preview = fields.Html(string='')
+    
+    @api.multi
+    def generate_preview(self):
+        report_name = 'loan.loan_amortization_report_template'
+        report = self.env.ref(report_name)
+        if not report:
+            raise UserError(_('Report %s not found') % report_name)
+
+        # Get the data to be passed to the report
+        docids = self.ids
+        docs = self.env['wgcc.loanapplication'].browse(docids)
+        data = {'docs': docs}
+
+        # Add the company_name field to the data dictionary
+        # for doc in docs:
+        #     data.update({
+        #         'company_name': doc.company_name,
+        #     })
+
+        # Render the report and save the result in the preview field
+        html = report.render(data)
+        self.preview = html
+        return True
+
+class Employee(models.Model):
+    _inherit = 'hr.employee'
+
+    @api.multi
+    def name_get(self):
+        res = []
+        for employee in self:
+            name = employee.name
+            if employee.identification_id:
+                name = employee.identification_id + ' - ' + name
+            res.append((employee.id, name))
+        return res
 
 class LoanApplicationTermsinMos(models.Model):
     _name = 'terms.mos'
