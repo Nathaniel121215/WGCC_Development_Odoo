@@ -4,11 +4,11 @@
     <data>
     
     <report 
-      id="loan_amortization_report"
+      id="loan_application_report"
       model="wgcc.loanapplication"
       string="Loan Amortization Report"
-      name="loan.loan_amortization_report_template"
-      file="loan.loan_amortization_report_template"
+      name="loan.loan_application_report_template"
+      file="loan.loan_application_report_template"
       report_type="qweb-html"
     />
     

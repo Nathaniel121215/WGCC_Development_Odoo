@@ -39,7 +39,7 @@
                             </group>
                         </group>
 
-                        <group colspan="16" col="16" style="border:1px solid red;">
+                        <group colspan="16" col="16">
                             <group colspan="8" col="8">
                                 <group name="Details of Loan" string="Details of Loan" colspan="8" col="8">
                                     <group colspan="4" col="4">
@@ -99,9 +99,10 @@
 
                             </group>
 
-                            <group name="BOX"  style="border:1px solid black; height:80rem; padding:2rem;" colspan="8" col="8">
-                                <group name="BOX2"  style="border:1px solid red; height:50rem;" colspan="8" col="8">
+                            <group name="BOX"  style="padding:2rem;" colspan="8" col="8">
+                                <group name="BOX2"  style="border:1px solid black;" colspan="8" col="8">
                                     
+                                    <!-- <field name="preview" nolabel="1"  colspan="8" col="8"/> -->
                                     <field name="preview" nolabel="1" colspan="8" col="8"/>
                                 </group>
 
