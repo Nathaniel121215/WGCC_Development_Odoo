@@ -2,7 +2,7 @@
 <odoo>
     <data>
     
-        <template id="loan_amortization_report_template" name="loan_amortization">
+        <template id="loan_application_report_template" name="loan_application">
         <t t-call="report.html_container">
             <div class="page">
                 <div style="width:100%; display:flex; justify-content:center; align-items:center; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; -webkit-box-pack: center; -webkit-justify-content: center;">

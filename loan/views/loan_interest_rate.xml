@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <!-- form view -->
+        <record id="interest_rate_view_form" model="ir.ui.view">
+            <field name="name">interest_rate.view.form</field>
+            <field name="model">interest.rate</field>
+            <field name="arch" type="xml">
+                <form string="Interest Rate">
+                    <sheet>
+                        <group>
+                            <field name="interest_rate" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- action view -->
+        <record id="interest_rate_action" model="ir.actions.act_window">
+            <field name="name">Interest Rate</field>
+            <field name="res_model">interest.rate</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+                <p></p>
+            </field>
+        </record>
+    
+    </data>
+    
+
+</odoo>

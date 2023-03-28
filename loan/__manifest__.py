@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','hr'],
+    'depends': ['base','hr','wgcc'],
 
     # always loaded
     'data': [
@@ -30,6 +30,9 @@
         'views/menu.xml',
         'reports/loan_application_report.xml',
         'reports/report.xml',
+
+        'views/loan_interest_rate.xml',
+        'reports/loan_amortization_report.xml',
         
         
     ],

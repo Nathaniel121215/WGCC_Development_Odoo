@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+        <template id="loan_amortization_report_template" name="loan_amortization">
+            <div class="page">
+               <t t-foreach="docs" t-as="o">
+                        <!-- <p t-esc="o.other_loans"/> -->
+                       name: <p t-field="o.name"/>
+                       loan type: <p t-field="o.loan_type"/>
+                       gross amount: <p t-field="o.gross_amount"/>
+                       interest rate: <p t-field="o.interest_rate"/>
+                       terms of months: <p t-field="o.term_of_months"/>
+                    </t>
+                </div>
+        </template>
+
+    </data>
+</odoo>

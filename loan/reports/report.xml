@@ -11,6 +11,15 @@
       file="loan.loan_application_report_template"
       report_type="qweb-html"
     />
+
+    <report 
+      id="loan_amortization_report"
+      model="wgcc.amortization"
+      string="Loan Amortization Report"
+      name="loan.loan_amortization_report_template"
+      file="loan.loan_amortization_report_template"
+      report_type="qweb-html"
+    />
     
     </data>
     

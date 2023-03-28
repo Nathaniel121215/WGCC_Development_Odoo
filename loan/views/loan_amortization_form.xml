@@ -15,8 +15,8 @@
                         <group>
                             <group>
                                 <group name="Details Loan" string="Details Loan">
-                                    <field name="employee_id" widget='selection'/>
-                                    <field name="name" />
+                                    <field name="emp_id" widget='selection'/>
+                                    <field name="name" attrs="{'readonly': [('name','=', False)]}"/>
                                     <field name="loan_type" />
                                     <field name="loan_amount" />
                                     <field name="gross_amount" />
@@ -68,7 +68,7 @@
             <field name="name">Amortization</field>
             <field name="res_model">wgcc.amortization</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">form</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
                     Create the first loan amortization

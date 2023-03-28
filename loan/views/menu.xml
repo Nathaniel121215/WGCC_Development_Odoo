@@ -12,5 +12,13 @@
 
         <menuitem id="application_menu" name="Loan Application" parent="main_loan_menu"
             action="application_action" />
+
+
+        <menuitem id="configuration_menu" name="Configuration" parent="main_loan_menu" />
+
+        <menuitem id="loan_interest_rate" name="Interest Rate" parent="configuration_menu"
+            action="interest_rate_action" />
+
     </data>
 </odoo>
+

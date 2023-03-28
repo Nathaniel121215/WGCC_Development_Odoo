@@ -60,7 +60,7 @@ class LoanApplication(models.Model):
     
     @api.multi
     def generate_preview(self):
-        report_name = 'loan.loan_amortization_report_template'
+        report_name = 'loan.loan_application_report_template'
         report = self.env.ref(report_name)
         if not report:
             raise UserError(_('Report %s not found') % report_name)
