@@ -1,0 +1,235 @@
+<odoo>
+  <record id="savings_action" model="ir.actions.act_window">
+    <field name="name">Savings</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">wgcc_savings.wgcc_savings</field>
+    <field name="view_mode">tree,kanban,form</field>
+    <field name="context">{'search_default_status': 1}</field>
+  </record>
+
+  <record id="search_savings" model="ir.ui.view">
+        <field name="name">search.view.savings</field>
+        <field name="model">wgcc_savings.wgcc_savings</field>
+        <field name="arch" type="xml">
+        <search string="STATUS">
+          <group expand="1" string="Group By">
+              <filter string="Status" name="status" context="{'group_by' : 'status'}" />
+          </group>
+        </search>
+		</field>
+	</record>
+
+<!-- Sequence -->
+ 
+ <record id="withdrawal_slip_no_sequence"  model="ir.sequence">
+  <field name="name">Widthrawal Slip No.</field>
+  <field name="code">withdrawal_slip_no_seq</field>
+  <field name="prefix">W</field>
+  <field name="padding">5</field>
+  <field name="number_next">1</field>
+  <field name="number_increment">1</field>
+  <field name="company_id" eval="False" /> 
+ </record>
+
+
+  <!-- For Query -->
+   <!-- <record id="query_action" model="ir.actions.act_window">
+    <field name="name">Query</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">wgcc_membership.wgcc_membership</field>
+    <field name="view_mode">form</field>
+  </record> -->
+
+
+  <menuitem id="savings_root" name="Savings" sequence="10" />
+  <menuitem id="savings_root_menu" name="Widthrawal Data Entry" parent="savings_root" sequence="2" action="savings_action"/>
+  <menuitem id="cash_replenishment_menu" name="Cash Replenishment" parent="savings_root" sequence="3" action="savings_action"/>
+  <menuitem id="atm_preparation_menu" name="ATM Preperation" parent="savings_root" sequence="4" action="savings_action"/>
+  
+  <menuitem id="reports_menu" name="Reports" parent="savings_root" sequence="5" />
+  <menuitem id="reports_sub_menu" name="Reports Sub" parent="reports_menu" sequence="6" action="savings_action"/>
+
+  <menuitem id="configuration_menu" name="Configuration" parent="savings_root" sequence="7" action="savings_action"/>
+  <menuitem id="configuration_sub_menu" name="Configuration Sub Menu" parent="configuration_menu" sequence="8" action="savings_action"/>
+  
+  <!-- <menuitem id="query_root_menu" name="Query" parent="savings_root" sequence="9" action="query_action"/>
+   -->
+  <record id="savings_form_view" model="ir.ui.view">
+      <field name="name">Savings</field>
+      <field name="model">wgcc_savings.wgcc_savings</field>
+      <field name="arch" type="xml">
+      
+        <form attrs="{'readonly': [('status', '!=', 'draft')]}">
+        <header>  
+        <button name="custom_release" type="object" class="oe_highlight" string="Release"   />
+        <button name="custom_cancel" type="object"  string="Cancel" />
+
+        <field name="status" widget="statusbar" />
+        </header>
+          <sheet>
+
+        <group col="6" >
+          <field name="employee_id"  options="{'no_quick_create': True, 'no_create_edit' : True, 'no_open' : True}" />           
+        </group>    
+
+        <group col="6" string="Savings Account Information" >
+          <field name="deposit_amount" />  
+          <field name="deposit_date" />  
+          <field name="Company" />           
+        </group>  
+
+        <group col="6" >
+          <field name="current_balance_before_widthrawal" />  
+          <field name="withdrawable_balance" />
+          <field name="last_date_of_widthrawal" />  
+          <field name="saving_deposit_deduction" />    
+                 
+        </group>  
+
+        <group col="6" string="Withdrawal Transaction: ">
+          <field name="withdrawable_mode"/>
+          <field name="amount_to_be_widthrawn" />   
+          <field name="cash" attrs="{'readonly': [('withdrawable_mode', '!=', 'cash')], 'required': [('withdrawable_mode', '=', 'cash')]}"/>   
+          <field name="withdrawal_slip_no"/>
+          <field name="date_of_widthrawal"/>
+          <field name="release_date"/>
+
+          </group>
+       
+        <group col="6" >
+          <field name="bank"  attrs="{'readonly': [('withdrawable_mode', '!=', 'atm')], 'required': [('withdrawable_mode', '=', 'atm')]}"/>  
+          <field name="account_number" attrs="{'readonly': [('withdrawable_mode', '!=', 'atm')], 'required': [('withdrawable_mode', '=', 'atm')]}" />  
+          <field name="bank_code" attrs="{'readonly': [('withdrawable_mode', '!=', 'atm')], 'required': [('withdrawable_mode', '=', 'atm')]}" />           
+        </group>
+
+        <group col="6" >
+          <field name="cheque_information" attrs="{'readonly': [('withdrawable_mode', '!=', 'cheque') ], 'required': [('withdrawable_mode', '=', 'cheque')]}" />  
+          <field name="cheque_no" attrs="{'readonly': [('withdrawable_mode', '!=', 'cheque')], 'required': [('withdrawable_mode', '=', 'cheque')]}" />             
+        </group>    
+
+        <group col="6" >
+          <field name="prepared_by" options="{'no_quick_create': True, 'no_create_edit' : True, 'no_open' : True}" />  
+          <field name="posted_by" options="{'no_quick_create': True, 'no_create_edit' : True, 'no_open' : True}" />             
+        </group> 
+
+        <group col="6" >
+          <field name="cancelled_by" options="{'no_quick_create': True, 'no_create_edit' : True, 'no_open' : True}" />  
+          <field name="cancel_reason"   />             
+        </group>      
+        <field name="current_user" invisible="True" />
+
+          </sheet>
+        <div class="oe_chatter"  >
+      
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+</div>
+     
+        </form>
+        
+      </field>
+      
+  </record>
+
+  <!-- For Query  -->
+<!-- 
+  <record id="query_form_view" model="ir.ui.view">
+      <field name="name">Query</field>
+      <field name="model">wgcc_membership.wgcc_membership</field>
+      <field name="arch" type="xml">
+      
+        <form>
+        <group style="Details Of Loan">
+        <field name="employee_id" />
+        <field name="name"/>
+        <button name="search_member" type="object" class="oe_highlight" string="Search Member" />
+        </group>
+        <notebook>
+
+        <page string="Savings Deposit">
+        <field name="savings_deposit">
+            <tree editable="bottom">
+              <field name="date" />
+              <field name="reference_no" />
+              <field name="slip_no" />
+              <field name="deposit" />
+              <field name="widthrawal"/>
+              <field name="balance"/>
+              <field name="lmb"/>
+            </tree>
+        </field>
+        </page>
+
+        <page string="Share Capital">
+          <field name="share_capital">
+            <tree editable="bottom">
+            
+             <field name="date" />
+             <field name="reference_no" />
+             <field name="debit" />
+              <field name="credit" />
+            <field name="balance" />
+
+            </tree>
+          </field>
+        </page>
+        
+        <page string="Loan Balances">
+        
+        <field name="loan_balances" nolabel="1">
+          <tree editable="bottom">
+
+            <field name="loan_type" />
+
+            <field name="loan_no" />
+            <field name="gross_amount" />
+            <field name="date_released" />
+            <field name="terms" />
+            <field name="monthly_amortization" />
+            <field name="balance" />
+            <field name="deferred" />
+            <field name="date_as_of" />
+          </tree>
+        </field>
+            
+        </page>
+        <page string="Loan Listing">
+        
+        </page>
+        <page string="Payroll Deduction">
+        
+        </page>
+        <page string="Dividend Information">
+        
+        </page>
+        <page string="Member's Profile ">
+        
+        </page>
+        <page string="Co-Maker">
+        
+        </page>
+
+
+        </notebook>
+
+
+        </form>
+        </field>
+        </record> -->
+
+  <!-- For the tree view -->
+
+  <record id="view_savings_tree" model="ir.ui.view">
+    <field name="name">wgcc.savings.tree</field> 
+    <field name="model">wgcc_savings.wgcc_savings</field> 
+    <field name="arch" type="xml">
+   
+        <tree>
+           <field name="id" />
+           <field name="Company" />
+           <field name="status" />
+        </tree>
+
+    </field>
+  </record>
+</odoo>

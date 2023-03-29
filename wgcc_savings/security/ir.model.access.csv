@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_wgcc_savings_wgcc_savings,wgcc_savings.wgcc_savings,model_wgcc_savings_wgcc_savings,,1,0,0,0
