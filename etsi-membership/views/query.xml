@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- For Query -->
+    <record id="membership_query_action" model="ir.actions.act_window">
+        <field name="name">Query</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wgcc_membership.wgcc_membership</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem
+        id="membership_query"
+        name="Query"
+        sequence="11" 
+        parent="membership_menu"
+        action="membership_query_action"/>
+
+    <!-- For Query  -->
+    <record id="query_form_view" model="ir.ui.view">
+        <field name="name">Query</field>
+        <field name="model">wgcc_membership.wgcc_membership</field>
+        <field name="arch" type="xml">
+            <form>
+                <group style="Details Of Loan">
+                    <field name="employee_id" />
+                    <field name="name" />
+                    <button name="search_member" type="object" class="oe_highlight"
+                        string="Search Member" />
+                </group>
+                <notebook>
+                    <page string="Savings Deposit">
+                        <field name="savings_deposit">
+                            <tree editable="bottom">
+                                <field name="date" />
+                                <field name="reference_no" />
+                                <field name="slip_no" />
+                                <field name="deposit" />
+                                <field name="widthrawal" />
+                                <field name="balance" />
+                                <field name="lmb" />
+                            </tree>
+                        </field>
+                    </page>
+
+                    <page string="Share Capital">
+                        <field name="share_capital">
+                            <tree editable="bottom">
+                                <field name="date" />
+                                <field name="reference_no" />
+                                <field name="debit" />
+                                <field name="credit" />
+                                <field name="balance" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Loan Balances">
+                        <field name="loan_balances" nolabel="1">
+                            <tree editable="bottom">
+
+                                <field name="loan_type" />
+
+                                <field name="loan_no" />
+                                <field name="gross_amount" />
+                                <field name="date_released" />
+                                <field name="terms" />
+                                <field name="monthly_amortization" />
+                                <field name="balance" />
+                                <field name="deferred" />
+                                <field name="date_as_of" />
+                            </tree>
+                        </field>
+
+                    </page>
+                    <page string="Loan Listing">
+
+                    </page>
+                    <page string="Payroll Deduction">
+
+                    </page>
+                    <page string="Dividend Information">
+
+                    </page>
+                    <page string="Member's Profile ">
+
+                    </page>
+                    <page string="Co-Maker">
+
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+</odoo>
+  
