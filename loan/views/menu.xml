@@ -8,13 +8,13 @@
             parent="main_loan_menu" /> -->
 
         <menuitem id="amortization_menu" name="Amortization" parent="main_loan_menu"
-            action="amortization_action" />
+            action="amortization_action" sequence="1"/>
 
         <menuitem id="application_menu" name="Loan Application" parent="main_loan_menu"
-            action="application_action" />
+            action="application_action" sequence="2"/>
 
 
-        <menuitem id="configuration_menu" name="Configuration" parent="main_loan_menu" />
+        <menuitem id="configuration_menu" name="Configuration" parent="main_loan_menu" sequence="3"/>
 
         <menuitem id="loan_interest_rate" name="Interest Rate" parent="configuration_menu"
             action="interest_rate_action" />

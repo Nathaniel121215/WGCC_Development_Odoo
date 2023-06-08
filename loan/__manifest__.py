@@ -25,15 +25,15 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'views/loan_interest_rate.xml',
         'views/loan_amortization_form.xml',
         'views/loan_application.xml',
-        'views/menu.xml',
         'reports/loan_application_report.xml',
         'reports/report.xml',
 
-        'views/loan_interest_rate.xml',
+        
         'reports/loan_amortization_report.xml',
         
-        
+        'views/menu.xml',
     ],
 }
