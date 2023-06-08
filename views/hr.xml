@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Employee View -->
+        <record id="true_move_etsi_hr_employee_form_view" model="ir.ui.view">
+            <field name="name">true.move.etsi.hr.employee.form.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="etsi_hrms.etsi_hr_employee_form_view"/>
+            <field name="arch" type="xml">
+                <!-- Hide given name on employee view personal information tab -->
+                <xpath expr="//field[@name='emp_company_name']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <!-- Disable options of country field -->
+                <xpath expr="//field[@name='country_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Add Domain field on employee view public information tab after Department field -->
+                <xpath expr="//page[@name='public']/group[1]/group[2]/field[@name='department_id']" position="after">
+                    <field name="domain_id" options="{'no_open': True, 'no_create': True, 'no_edit': True}"/>
+                </xpath>
+                <!-- Disable options of department field -->
+                <xpath expr="//page[@name='public']/group[1]/group[2]/field[@name='department_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Disable options of job title field -->
+                <xpath expr="//page[@name='public']/group[1]/group[2]/field[@name='job_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Disable options of manager field -->
+                <xpath expr="//page[@name='public']/group[1]/group[2]/field[@name='parent_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Disable options of working time field -->
+                <xpath expr="//page[@name='public']/group[1]/group[2]/field[@name='calendar_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Disable options of related user field -->
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Disable options of employee category field -->
+                <xpath expr="//field[@name='emp_categ_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="true_move_hr_timesheet_employee_extd_form" model="ir.ui.view">
+            <field name="name">true.move.hr.timesheet.employee.extd.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="sale_timesheet.hr_timesheet_employee_extd_form"/>
+            <field name="arch" type="xml">
+                <!-- Disable options of account field -->
+                <xpath expr="//group[1]/field[@name='account_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Added countries located @ Employee > Configuration > Employee -->
+        <menuitem id="menu_hr_employee_country" action="base.action_country" parent="etsi_hrms.employee_config_main_menu" sequence="11" groups="base.group_erp_manager"/>
+
+        <!-- Contract View -->
+        <record id="true_move_hr_contract_view_form" model="ir.ui.view">
+            <field name="name">true.move.hr.contract.view.form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Hide advantages field on contracts view information tab -->
+                <xpath expr="//form/sheet/notebook/page[@name='information']/group[1]/group[@name='salary_and_advantages']/field[@name='advantages']" position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <!-- Replace duration group to show contract date_start and date_end -->
+                <xpath expr="//group[@name='duration_group']" position="replace">
+                    <group name="duration_group" string="Duration">
+                        <label for="date_start" string="Duration"/>
+                        <div>
+                            <field name="date_start" class="oe_inline" attrs="{'readonly':[('state','not in',['draft'])]}"/> - <field name="date_end" class="oe_inline" attrs="{'readonly':[('state','not in',['draft'])],
+                            'required' : [('type_id', '=',%(etsi_hrms.hr_contract_type_contractual)d)]}"/>
+                        </div>
+                        <field name="working_hours" attrs="{'readonly':[('state','not in',['draft'])]}" />
+                        <field name="schedule_pay" string="Payroll Frequency" attrs="{'readonly':[('state','not in',['draft'])]}"/>
+                    </group>
+                </xpath>
+                <!-- Rename wage field to payroll rate -->
+                <xpath expr="//form/sheet/notebook/page[@name='information']/group[1]/group[@name='salary_and_advantages']/field[@name='wage']" position="attributes">
+                    <attribute name="string">Payroll Rate</attribute>
+                </xpath>
+                <!-- Add domain field -->
+                <xpath expr="//form/sheet/group[1]/group[2]/field[@name='department_id']" position="after">
+                    <field name="domain_id" options="{'no_open': True, 'no_create': True, 'no_edit': True}"/>
+                </xpath>
+                <!-- Disable options of employee field -->
+                <xpath expr="//form/sheet/group[1]/group[1]/field[@name='employee_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Disable options of job title field -->
+                <xpath expr="//form/sheet/group[1]/group[1]/field[@name='job_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Disable options of department field -->
+                <xpath expr="//form/sheet/group[1]/group[2]/field[@name='department_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Disable options of contract type field -->
+                <xpath expr="//form/sheet/group[1]/group[2]/field[@name='type_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Disable options of working schedule field on contracts view information tab -->
+                <xpath expr="//form/sheet/notebook/page[@name='information']/group[1]/group[@name='duration_group']/field[@name='working_hours']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="true_move_hr_contract_custom" model="ir.ui.view">
+            <field name="name">true.move.hr.contract.custom</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="etsi_hrms.hr_contract_custom"/>
+            <field name="arch" type="xml">
+                <!-- Disable options of Assigned to(Company) field -->
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+                <!-- Disable options of absence policy and overtime policy on contracts view policy tab -->
+                <xpath expr="//page[@name='policy']/group[1]/group[1]/field[@name='absence_policy_id']" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_open': True, 'no_create_edit': True}</attribute>
+                </xpath>
+                <xpath expr="//page[@name='policy']/group[1]/group[1]/field[@name='overtime_policy_id']" position="attributes">
+                    <attribute name="options">{'no_create': True, 'no_open': True, 'no_create_edit': True}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Contract View -->
+        <record id="true_move_hr_contract_form_inherit" model="ir.ui.view">
+            <field name="name">true.move.hr.contract.form.inherit</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_payroll.hr_contract_form_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='schedule_pay']" position="attributes">
+                    <attribute name="string">Payroll Frequency</attribute>
+                </xpath>
+                <xpath expr="//field[@name='struct_id']" position="after">
+                    <field name="payroll_type" attrs="{'readonly':[('state','not in',['draft'])]}" />
+                </xpath>
+                <!-- Disable options of salary structure field on contracts view information tab -->
+                <xpath expr="//field[@name='struct_id']" position="attributes">
+                    <attribute name="options">{'no_open': True, 'no_create': True, 'no_edit': True}</attribute>
+                </xpath>
+            </field>
+        </record>
+        
+        <!-- Absence Policy View -->
+        <record id="true_move_absence_policy_view_form" model="ir.ui.view">
+            <field name="name">true.move.absence.policy.view.form</field>
+            <field name="model">hr.policy.absence</field>
+            <field name="inherit_id" ref="etsi_hrms.absence_policy_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group[3]/field/form/group[1]/field[@name='use_late_range']" position="after">
+                    <field name="is_grace_period_monthly"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Modify menu group -->
+        <!-- Contacts menu -->
+        <record model="ir.ui.menu" id="contacts.menu_contacts">
+            <field name="groups_id" eval="[(6,0,[ref('hr.group_hr_manager')])]"/>
+        </record>
+        <!-- Employees Menu -->
+        <record model="ir.ui.menu" id="hr.menu_hr_root">
+            <field name="groups_id" eval="[(6,0,[ref('hr.group_hr_manager')])]"/>
+        </record>
+        <!-- Leaves Menu -->
+        <record model="ir.ui.menu" id="hr_holidays.menu_open_allocation_holidays">
+            <field name="groups_id" eval="[(6,0,[ref('hr.group_hr_manager')])]"/>
+        </record>
+    </data>
+</odoo>

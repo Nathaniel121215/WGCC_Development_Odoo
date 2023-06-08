@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="true_move_view_users_form_simple_modif" model="ir.ui.view">
+            <field name="name">true.move.view.users.form.simple.modif</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+            <field name="arch" type="xml">
+                <!-- User preferences timezone reaonly -->
+                <xpath expr="//form/group[@name='preferences']/field[@name='tz']" position="attributes">
+                    <attribute name="readonly">True</attribute>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Domain Name configuration view located @ Recruitment > Configuration -->
+        <record id="hr_domain_tree" model="ir.ui.view">
+            <field name="name">hr.domain.tree</field>
+            <field name="model">hr.domain</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_domain_form" model="ir.ui.view">
+            <field name="name">hr.domain.form</field>
+            <field name="model">hr.domain</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                                <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                            </button>
+                        </div>
+                        <group>
+                            <field name="name" string="Domain Name"/>
+                            <field name="department_manager_id" string="Department Manager" options="{'no_create': True, 'no_open': True, 'no_create_edit': True}" groups="base.group_erp_manager"/>
+                            <field name="department_manager_user_id" string="Department Manager User" options="{'no_create': True, 'no_open': True, 'no_create_edit': True}" groups="base.group_erp_manager" invisible="True"/>
+                            <field name="admin_user" string="Admin User" options="{'no_create': True, 'no_open': True, 'no_create_edit': True}" groups="base.group_erp_manager" invisible="True"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_ids" widget="mail_thread"/>
+                      </div>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_hr_domain" model="ir.actions.act_window">
+            <field name="name">Domain Name</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.domain</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p>
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_hr_domain_config" name="Domain Name" parent="hr_recruitment.menu_hr_recruitment_configuration" action="action_hr_domain" sequence="11" />
+        <menuitem id="etsi_hrms.hr_job_offer_main_menu"
+               parent="hr_recruitment.menu_hr_recruitment_configuration"
+               name="Job Offer" sequence="100"/>
+    </data>
+</odoo>

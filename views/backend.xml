@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+		 <template id="assets_backend" name="account assets" inherit_id="web.assets_backend">
+		     <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/true_move/static/src/less/hr_attendance.less"/>
+                <script type="text/javascript" src="/true_move/static/src/js/custom_script.js"></script>
+                <script type="text/javascript" src="/true_move/static/src/js/support_hour_attendance.js"></script>
+		     </xpath>
+		</template>
+	</data>
+</odoo>
+

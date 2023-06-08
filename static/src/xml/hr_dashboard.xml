@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="hr_dashboard.dashboard" t-extend="hr_dashboard.dashboard">
+        <t t-jquery="div[id='manpower']" t-operation='replace'/>
+            <!-- <xpath expr="//div[1]/div[2]/div[1]/div[1]/t[12]" position="replace"/> -->
+
+    </t>
+</templates>

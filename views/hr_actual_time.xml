@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <!-- Actual Time View -->
+        <record id="true_move_hr_actual_time_form_view" model="ir.ui.view">
+            <field name="name">true.move.hr.actual.time.form.view</field>
+            <field name="model">hr.actual.time</field>
+            <field name="inherit_id" ref="etsi_attendance.hr_actual_time_form_view"/>
+            <field name="arch" type="xml">
+                <!-- Add Domain field and move department field -->
+                <xpath expr="//sheet/group[1]" position="before">
+                    <field name="domain_id_domain" invisible="True"/>
+                    <field name="department_id_domain" invisible="True"/>
+                    <field name="employee_id_domain" invisible="True"/>
+                </xpath>
+                <xpath expr="//form/sheet/group[1]/group[1]/field[@name='department_id']" position="replace"/>
+                <xpath expr="//form/sheet/group[1]/group[1]/field[@name='employee_id']" position="attributes">
+                    <attribute name="domain">employee_id_domain</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[1]" position="inside">
+                    <group>
+                        <field name="domain_id" domain="domain_id_domain" options="{'no_create': True, 'no_open': True, 'no_create_edit': True}" attrs="{'readonly':[('state','!=','draft')]}" required="True"/>
+                        <field name="department_id" domain="department_id_domain" options="{'no_create': True, 'no_open': True, 'no_create_edit': True}" attrs="{'readonly':[('state','!=','draft')]}" required="True"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+  </odoo>

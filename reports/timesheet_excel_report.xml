@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <report
+            id="etsi_timesheet.timesheet_xlsx"
+            model="hr_timesheet_sheet.sheet"
+            string="Timesheet Detailed (Xlsx)"
+            report_type="xlsx"
+            name="true_move.etsi_timesheet.hr_timesheet_sheet_sheet.xlsx"
+            file="true_move.etsi_timesheet.hr_timesheet_sheet_sheet.xlsx"
+            attachment_use="False"
+        />
+    </data>
+</odoo>

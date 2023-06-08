@@ -1,0 +1,64 @@
+<odoo>
+    <data>
+        <template id="true_move_external_layout_header" inherit_id="report.external_layout_header">
+            <xpath expr="//div[@class='col-xs-3']" position="replace"/>
+        </template>
+        <template id="true_move_external_layout_custom_header_base" inherit_id="etsi_base.external_layout_custom_header_base">
+            <xpath expr="//div[@class='col-xs-9 text-right'][2]" position="replace">
+                <div class="col-xs-12 text-right">
+                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
+                </div>
+            </xpath>
+            <xpath expr="//div[@class='col-xs-9 text-right'][1]" position="replace"/>
+        </template>
+        <template id="true_move_timesheet_report" name="True Move Timesheet Report" inherit_id="etsi_timesheet.timesheet_report">
+        <xpath expr="//table[1]" position="replace">
+            <table style="width:100%;">
+                <td style="width:45%;">
+                    <table>
+                        <tr>
+                        <th style="vertical-align:middle">Name:</th>
+                        <th style="vertical-align:middle"><span t-esc="o.employee_id.name"/></th>
+                        </tr>
+                        <tr>
+                        <th style="vertical-align:middle">Contract:</th>
+                        <th style="vertical-align:middle"><span t-esc="o.contract_id.name"/></th>
+                        </tr>
+                        <tr>
+                        <th style="vertical-align:middle">Working Hours:</th>
+                        <th style="vertical-align:middle"><span t-esc="o.contract_id.working_hours.name"/></th>
+                        </tr>
+                    </table>
+                </td>
+                <!-- <td>
+                    <table>
+                        <tr>
+                            <th style="vertical-align:middle">Company:</th>
+                            <th style="vertical-align:middle"><span t-esc="o.contract_id.partner_id.name"/></th>
+                        </tr>
+                    </table>
+                </td> -->
+                <td style="width:25%;">
+                    <table>
+                        <tr>
+                            <th style="vertical-align:middle">Company:</th>
+                            <th style="vertical-align:middle"><span t-esc="o.contract_id.partner_id.name"/></th>
+                        </tr>
+                        <tr>
+                            <th style="vertical-align:middle">Domain:</th>
+                            <th style="vertical-align:middle"><span t-esc="o.employee_id.domain_id.name"/></th>
+                        </tr>
+                        <tr>
+                        <th style="vertical-align:middle">Department:</th>
+                        <th style="vertical-align:middle"><span t-esc="o.contract_id.department_id.name"/></th>
+                        </tr>
+                    </table>
+                </td>
+            </table>
+        </xpath>
+        <xpath expr="//table[3]/tr[2]/t" position="replace">
+            <td><center><b>Supervisor/Manager </b></center></td>
+        </xpath>
+        </template>
+    </data>
+</odoo>
