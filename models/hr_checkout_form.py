@@ -2,6 +2,9 @@ from odoo import api, models, fields
 from datetime import datetime, timedelta
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import pytz
+from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError
+from odoo import http
 
 # Code from thai_support_hour 
 def seconds(td):
@@ -37,23 +40,13 @@ class HrCheckout(models.Model):
     # ADD ALL THE FIELDS HERE
     name = fields.Char(string='Name')
     description = fields.Text(string='Description')
+    message = fields.Char(string='Message')
 
 
-    # Submit button here
     @api.multi
     def process_form_submission(self):
         
-        current_user_id = self.env.user.id
-        print("Current user ID:", current_user_id)
-        attendance_id = self.env['hr.attendance'].search([('check_out', '=', False) ,  ('employee_id', '=', current_user_id)])
-        attendance_obj = self.env['hr.attendance'].browse(attendance_id.id)
-        date_time_now = convert_datetime_local(self, datetime.now().strftime(DEFAULT_SERVER_DATETIME_FORMAT))[
-            'local_dt']
-        check_out = date_time_now - timedelta(hours=7)
-        check_out_str = check_out + timedelta(hours=8)
-    
-        attendance_obj.write({'check_out': check_out
-                            #   'has_submitted_form': True,
-                            #   'check_out_msg': 'you have submitted a form',
-                              })
-
+        # Gawa pa tayu ng condition here
+        
+        value = True
+        return {'value': value}

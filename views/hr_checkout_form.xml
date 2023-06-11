@@ -1,5 +1,7 @@
 <odoo>
 <data>
+
+
     <record id="hr_checkout_view_form" model="ir.ui.view">
             <field name="name">hr.checkout.view.form</field>
             <field name="model">hr.checkout.form</field>
@@ -11,15 +13,14 @@
                         <field name="name" string="Name" />
                     </sheet>
                     <footer>
-                        <!-- Custom footer content -->
-                        <button name="process_form_submission" string="Submit" type="object" class="btn-primary"/>
+                            <button name="process_form_submission" string="Submit" type="object" class="btn btn-primary hr-checkout-submit-button"/>
                     </footer>
                 </form>
             </field>
 	</record>
 
     <record id="action_hr_support_hour" model="ir.actions.act_window">
-        <field name="name">Checkout Form</field>
+        <field name="name">Checkout Forms</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.checkout.form</field>
         <field name="view_type">form</field>
@@ -31,6 +32,5 @@
         </field>
     </record>
 
-
 </data>
-</odoo>
+</odoo> 
